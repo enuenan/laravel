@@ -25,3 +25,13 @@
 
 <!-- USE ROUTE LIKE THIS -->
 Route::get('__CHANGE__THIS__2__', [ServiceController::class, 'changeServiceStatus']);
+
+<!-- USE THIS IN CONTROLLER -->
+public function changeEventStatus(Request $request)
+{
+    $obj = Event::find($request->id);
+    $obj->status = $request->status;
+    $obj->save();
+
+    return response()->json(['success' => 'Status change successfully.']);
+}
